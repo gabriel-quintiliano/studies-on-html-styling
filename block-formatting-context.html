@@ -16,7 +16,7 @@
         }
         
         .default {
-            margin: 30px 0;
+            margin: 15px 0;
             background-color: yellowgreen;
             border: 1px solid black;
         }
@@ -53,33 +53,61 @@
 
         img {
             float: left;
+            opacity: 0.5;
+        }
+
+        .sidenote {
+            font-size: 18px;
+            background-color: rgb(2, 197, 197);
         }
 
     </style>
 </head>
 <body>
     <h2>All the yellowgreen colored divs bellow have the following styling:</h2>
-    <p> margin: 30px 0;<br>
+    <p> margin: 15px 0;<br>
         background-color: yellowgreen;<br>
-        border: 1px solid black;<br><br><br></p>
+        border: 1px solid black;<br>
+        display: As described inside the div<br><br><br></p>
 
-    <h2>Each of the yellowgreen colored divs have a child div whose styling is:</h2>
+    <h2>Each of the yellowgreen colored divs have a child p whose styling is:</h2>
     <p> background-color: bisque;<br>
-        margin: 15px;<br>
-        display: As described in text<br><br><br></p>
+        margin: 15px;<br><br><br></p>
     
     <h2>Each <img> has the following styling:</h2>
     <p> width: 100px;<br>
         height: 100px;<br>
+        opacity: 0.5;<br>
         float: left;<br><br><br></p>
 
-    <p>Click <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context" style="background-color: aqua;">here</a> to access mdn's documentation on Block Formatting Contexts (BFC) and when new BFC are created for the element<br><br><br></p>
+    <p>Click <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context" target="_blank" style="background-color: aqua;">here</a>
+        to access mdn's documentation on Block Formatting Contexts (BFC) and when new BFC are created for the element</p>
+    <span style="background-color: rgb(2, 197, 197);">According to the documentation, an element that establishes a new block formatting context will:</span>
+    <ul>
+        <li>contain internal floats</li>
+        <li>exclude external floats</li>
+        <li>suppress margin collapsing<a href="#note-margin-collapsing" title="See sidenote on margin-collaping suppression"> *</a></li>
+    </ul><br><br><br>
 
-    <div class="default inline"><img src="https://picsum.photos/100/100" alt=""><div class="child">inline: inline + flow (same BFC)</div></div>
-    <div class="default inline-block"><img src="https://picsum.photos/100/100" alt=""><div class="child">inline-block: inline + flow-root (new BFC)</div></div>
-    <div class="default block"><img src="https://picsum.photos/100/100" alt=""><div class="child">block: block + flow (same BFC)</div></div>
-    <div class="default flow-root"><img src="https://picsum.photos/100/100" alt=""><div class="child">flow-root: block + flow-root (new BFC)</div></div>
-    <div class="default flex"><img src="https://picsum.photos/100/100" alt=""><div class="child">flex: block + flex (new BFC)</div></div>
-    <div class="default grid"><img src="https://picsum.photos/100/100" alt=""><div class="child">grid: block + grid (new BFC)</div></div>
+    <div class="default inline"><img src="https://picsum.photos/100/100" alt=""><p class="child"><b>inline:</b> inline + flow (same BFC)</p></div>
+    <div class="default inline-block"><img src="https://picsum.photos/100/100" alt=""><p class="child"><b>inline-block:</b> inline + flow-root (new BFC)<a href="#note-inline-block" title="See sidenote on the sizing and wrapping of this inline-block element"> **</a></p></div>
+    <div class="default block"><img src="https://picsum.photos/100/100" alt=""><p class="child"><b>block:</b> block + flow (same BFC)</p></div>
+    <div class="default block"><img src="https://picsum.photos/100/100" alt=""><p class="child"><b>block:</b> block + flow (same BFC)<br>this elem. is block too, see how it doesn't 'exclude external floats'</p></div>
+    <div class="default flow-root"><img src="https://picsum.photos/100/100" alt=""><p class="child"><b>flow-root:</b> block + flow-root (new BFC)<br>this elem. has a new indiviual BFC thus it 'excludes external floats' and expands to fully embrace it's own floating image</p></div>
+    <div class="default flex"><img src="https://picsum.photos/100/100" alt=""><p class="child"><b>flex:</b> block + flex (new BFC)</p></div>
+    <div class="default grid"><img src="https://picsum.photos/100/100" alt=""><p class="child"><b>grid:</b> block + grid (new BFC)</p></div>
+    <br><br>
+    <p id="note-margin-collapsing"><span class="sidenote">*</span><b>More on margin-collaping suppression:</b> This is a point
+    on new BFCs that I couldn't really make total sense of, because as it's shown in the example above, we can clearly see that <b>inline-block,
+    flow-root, flex and grid</b> have new indiviual BFC, but only the <b>inline-block</b> element seems to be suppressing margin-collaping</p><br>
+
+    <p id="note-inline-block"><span class="sidenote">**</span><b>More on the sizing and wrapping of this inline-block element:</b> According to my
+    own logic of thought, having 'display-outside' as 'inline', the element's size is fully dependent on it's inner content, which in this case is a 'p',
+    whose default display value is 'block' which make the element's height dependent on it's children or inner content and its width dependent on its
+    parent's width (to fill it completely).<br>Thus, in this case, the parent 'div' shinks to embrace it's inner content, meanwhile, the child 'p'
+    ends up shinking togheter, as its width follows its parent's, until both reach the width of 'p' inner-text (If you look throught the 50% opacity
+    image, you can see that the parent container is just the size of the 'p' inner-text), but as the image has a 'float: left' style, it get over and in
+    the way of the inner-text, which is then wrapped (as white-space prop default value is 'normal'), also, if we set 'white-space: nowrap' as style
+    of 'p', we can see that p's inner-text, unexpectedly, overflows</p>
 </body>
 </html>
