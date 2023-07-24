@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 50px;
+        }
+        
+        .default {
+            margin: 30px 0;
+            background-color: yellowgreen;
+            border: 1px solid black;
+        }
+
+        .child {
+            background-color: bisque;
+            margin: 15px;
+        }
+
+        .inline {
+            display: inline;
+        }
+
+        .inline-block {
+            display: inline-block;
+        }
+
+        .block {
+            display: block;
+        }
+
+        .flow-root {
+            display: flow-root;
+        }
+
+
+        .flex {
+            display: flex;
+        }
+        
+        .grid {
+            display: grid;
+        }
+
+        img {
+            float: left;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>All the yellowgreen colored divs bellow have the following styling:</h2>
+    <p> margin: 30px 0;<br>
+        background-color: yellowgreen;<br>
+        border: 1px solid black;<br><br><br></p>
+
+    <h2>Each of the yellowgreen colored divs have a child div whose styling is:</h2>
+    <p> background-color: bisque;<br>
+        margin: 15px;<br>
+        display: As described in text<br><br><br></p>
+    
+    <h2>Each <img> has the following styling:</h2>
+    <p> width: 100px;<br>
+        height: 100px;<br>
+        float: left;<br><br><br></p>
+
+    <p>Click <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context" style="background-color: aqua;">here</a> to access mdn's documentation on Block Formatting Contexts (BFC) and when new BFC are created for the element<br><br><br></p>
+
+    <div class="default inline"><img src="https://picsum.photos/100/100" alt=""><div class="child">inline: inline + flow (same BFC)</div></div>
+    <div class="default inline-block"><img src="https://picsum.photos/100/100" alt=""><div class="child">inline-block: inline + flow-root (new BFC)</div></div>
+    <div class="default block"><img src="https://picsum.photos/100/100" alt=""><div class="child">block: block + flow (same BFC)</div></div>
+    <div class="default flow-root"><img src="https://picsum.photos/100/100" alt=""><div class="child">flow-root: block + flow-root (new BFC)</div></div>
+    <div class="default flex"><img src="https://picsum.photos/100/100" alt=""><div class="child">flex: block + flex (new BFC)</div></div>
+    <div class="default grid"><img src="https://picsum.photos/100/100" alt=""><div class="child">grid: block + grid (new BFC)</div></div>
+</body>
+</html>
