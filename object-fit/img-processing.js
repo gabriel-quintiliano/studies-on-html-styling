@@ -7,6 +7,10 @@ function setComparisonImages(newImgSrc) {
     for (img of comparisonImgTags) {
         img.src = newImgSrc;
     }
+
+    if (defaultImg.src !== newImgSrc) {
+        defaultImg.src = newImgSrc;
+    }
 }
 
 setComparisonImages(defaultImg.src); // to set the comparison images (based on the default it set) on the first time the page loads

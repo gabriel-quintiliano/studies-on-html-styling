@@ -29,6 +29,13 @@ img:not(img#default-img) {
     height: 100%;
 }
 
+.base-img-content {
+    height: 100dvh;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+}
+
 .main-grid-container {
     display: grid;
     grid-template-columns: repeat(var(--grid-col-qty), auto );
@@ -44,8 +51,11 @@ img:not(img#default-img) {
 }
 
 .comparison-container {
-    background-color: rgb(179, 179, 255);
+    background-image: url("./bg-pattern-smaller.png");
+    background-size: none;
     align-self: center;
+    resize: both;
+    overflow: hidden;
 }
 
 .bigger {
