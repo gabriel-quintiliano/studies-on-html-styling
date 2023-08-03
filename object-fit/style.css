@@ -1,0 +1,115 @@
+:root {
+    --grid-col-qty: 4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(252, 170, 170);
+    min-height: 100vh;
+    width: 100%;
+}
+
+section {
+    padding: 20px;
+}
+
+img#default-img {
+    display: block;
+}
+
+img:not(img#default-img) {
+    width: 100%;
+    height: 100%;
+}
+
+.base-img-content {
+    height: 100dvh;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+}
+
+.main-grid-container {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-col-qty), auto );
+    gap: 20px;
+}
+
+.fill-3-grid-columns {
+    grid-column: 2 /5;
+}
+
+.fill-grid-columns {
+    grid-column: 1 / calc(var(--grid-col-qty) + 1);
+}
+
+.comparison-container {
+    background-image: url("./bg-pattern-smaller.png");
+    background-size: none;
+    align-self: center;
+    resize: both;
+    overflow: hidden;
+}
+
+.bigger {
+    height: 300px;
+    width: 300px;
+}
+
+.smaller {
+    height: 180px;
+    width: 180px;
+}
+
+.portrait {
+    height: 300px;
+    width: 180px;
+}
+
+.landscape {
+    height: 180px;
+    width: 300px;
+}
+
+.banner {
+    height: 50px;
+}
+
+.obf-none {
+    object-fit: none;
+}
+
+.obf-fill {
+    object-fit: fill;
+}
+
+.obf-contain {
+    object-fit: contain;
+}
+
+.obf-cover {
+    object-fit: cover;
+}
+
+.obf-scale-down {
+    object-fit: scale-down;
+}
+
+.bg-lightcoral {
+    background-color: lightcoral;
+}
+
+.bg-lightsalmon {
+    background-color: lightsalmon;
+}
+
+.bg-lightblue {
+    background-color: rgb(179, 179, 255);
+}
