@@ -4,150 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>object-fit prop</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        .main-container {
-            display: flex;
-            justify-content: center;
-            box-shadow: inset 1000px 0 0 lightcoral, inset -1000px 0 0 lightsalmon;
-        }
-        
-        .main-container > * {
-            padding: 20px;
-        }
-        
-        .base-content {
-            min-height: 100vh;
-            background-color: lightcoral;
-        }
+    <link rel="stylesheet" href="style.css">
+    <script src="img-processing.js" defer></script>
 
-        .comparisons-wrapper {
-            height: 100vh;
-            overflow-y: scroll;
-            scrollbar-width: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            background-color: lightsalmon;
-            gap: 20px;
-        }
-
-        .comparisons-wrapper img {
-            height: 100%;
-            width: 100%;
-        }
-        
-        .comparison {
-            display: grid;
-            align-items: center;
-            justify-content: start;
-            grid-template-columns: repeat(4, auto);
-            gap: 20px;
-        }
-
-        .comparison__child {
-            box-sizing: content-box;
-            border: 3px solid rgb(0, 0, 0);
-            background-color: rgb(179, 179, 255);
-        }
-        
-        .bigger {
-            height: 300px;
-            width: 300px;
-        }
-        
-        .smaller {
-            height: 180px;
-            width: 180px;
-        }
-        
-        .portrait {
-            height: 300px;
-            width: 180px;
-        }
-        
-        .landscape {
-            height: 180px;
-            width: 300px;
-        }
-
-        .of-none {
-            object-fit: none;
-        }
-
-        .of-fill {
-            object-fit: fill;
-        }
-
-        .of-contain {
-            object-fit: contain;
-        }
-
-        .of-cover {
-            object-fit: cover;
-        }
-
-        .of-scale-down {
-            object-fit: scale-down;
-        }
-        
-    </style>
 </head>
 <body>
-    <div class="main-container">
-        <div class="base-content">
-            <img src="./pattern-250px.png" height="250" width="250" alt="">
-        </div>
-        <div class="comparisons-wrapper">
-            <h1>comparisons of different object-fit values in different container sizes</h1>
-            <h2>Without the object-fit property applied</h2>
-            <div class="comparison">
-                <div class="comparison__child bigger"><img src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child smaller"><img src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child portrait"><img src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child landscape"><img src="./pattern-250px.png" height="250" width="250" alt=""></div>
-            </div>
-            <h2>object-fit: none;</h2>
-            <div class="comparison">
-                <div class="comparison__child bigger"><img class="of-none" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child smaller"><img class="of-none" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child portrait"><img class="of-none" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child landscape"><img class="of-none" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-            </div>
-            <h2>object-fit: fill;</h2>
-            <div class="comparison">
-                <div class="comparison__child bigger"><img class="of-fill" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child smaller"><img class="of-fill" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child portrait"><img class="of-fill" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child landscape"><img class="of-fill" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-            </div>
-            <h2>object-fit: contain;</h2>
-            <div class="comparison">
-                <div class="comparison__child bigger"><img class="of-contain" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child smaller"><img class="of-contain" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child portrait"><img class="of-contain" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child landscape"><img class="of-contain" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-            </div>
-            <h2>object-fit: cover;</h2>
-            <div class="comparison">
-                <div class="comparison__child bigger"><img class="of-cover" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child smaller"><img class="of-cover" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child portrait"><img class="of-cover" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child landscape"><img class="of-cover" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-            </div>
-            <h2>object-fit: scale-down;</h2>
-            <div class="comparison">
-                <div class="comparison__child bigger"><img class="of-scale-down" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child smaller"><img class="of-scale-down" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child portrait"><img class="of-scale-down" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-                <div class="comparison__child landscape"><img class="of-scale-down" src="./pattern-250px.png" height="250" width="250" alt=""></div>
-            </div>
-        </div>
-    </div>
+    <main>
+        <h1 style="display: none;">Study on object-fit css property different values</h1>
+        <section class="bg-lightsalmon">
+            <h2>Original image info:</h2>
+            <img id="default-img" src="pattern-250px.png" alt="">
+            <input type="file" accept="image/*">
+        </section>
+        <section class="main-grid-container bg-lightcoral">
+            <h2 class="fill-grid-row">Examples of how the image changes in different size parent containers for different values of object-fit</h2>
+
+            <h3 class="fill-grid-row">object-fit: none</h3>
+            <div class="comparison-container bigger"><img class="obf-none" src="#" alt=""></div>
+            <div class="comparison-container smaller"><img class="obf-none" src="#" alt=""></div>
+            <div class="comparison-container portrait"><img class="obf-none" src="#" alt=""></div>
+            <div class="comparison-container landscape"><img class="obf-none" src="#" alt=""></div>
+
+            <h3 class="fill-grid-row">object-fit: fill</h3>
+            <div class="comparison-container bigger"><img class="obf-fill" src="#" alt=""></div>
+            <div class="comparison-container smaller"><img class="obf-fill" src="#" alt=""></div>
+            <div class="comparison-container portrait"><img class="obf-fill" src="#" alt=""></div>
+            <div class="comparison-container landscape"><img class="obf-fill" src="#" alt=""></div>
+
+            <h3 class="fill-grid-row">object-fit: contain</h3>
+            <div class="comparison-container bigger"><img class="obf-contain" src="#" alt=""></div>
+            <div class="comparison-container smaller"><img class="obf-contain" src="#" alt=""></div>
+            <div class="comparison-container portrait"><img class="obf-contain" src="#" alt=""></div>
+            <div class="comparison-container landscape"><img class="obf-contain" src="#" alt=""></div>
+
+            <h3 class="fill-grid-row">object-fit: cover</h3>
+            <div class="comparison-container bigger"><img class="obf-cover" src="#" alt=""></div>
+            <div class="comparison-container smaller"><img class="obf-cover" src="#" alt=""></div>
+            <div class="comparison-container portrait"><img class="obf-cover" src="#" alt=""></div>
+            <div class="comparison-container landscape"><img class="obf-cover" src="#" alt=""></div>
+
+            <h3 class="fill-grid-row">object-fit: scale-down</h3>
+            <div class="comparison-container bigger"><img class="obf-scale-down" src="#" alt=""></div>
+            <div class="comparison-container smaller"><img class="obf-scale-down" src="#" alt=""></div>
+            <div class="comparison-container portrait"><img class="obf-scale-down" src="#" alt=""></div>
+            <div class="comparison-container landscape"><img class="obf-scale-down" src="#" alt=""></div>
+        </section>
+    </main>
 </body>
 </html>

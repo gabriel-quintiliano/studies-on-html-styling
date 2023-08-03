@@ -1,0 +1,92 @@
+:root {
+    --grid-col-qty: 4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(252, 170, 170);
+    min-height: 100vh;
+    width: 100%;
+}
+
+section {
+    padding: 20px;
+}
+
+img:not(img#default-img) {
+    width: 100%;
+    height: 100%;
+}
+
+.main-grid-container {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-col-qty), auto );
+}
+
+.fill-grid-row {
+    grid-column: 1 / calc(var(--grid-col-qty) + 1);
+}
+
+.comparison-container {
+    background-color: rgb(179, 179, 255);
+    align-self: center;
+}
+
+.bigger {
+    height: 300px;
+    width: 300px;
+}
+
+.smaller {
+    height: 180px;
+    width: 180px;
+}
+
+.portrait {
+    height: 300px;
+    width: 180px;
+}
+
+.landscape {
+    height: 180px;
+    width: 300px;
+}
+
+.obf-none {
+    object-fit: none;
+}
+
+.obf-fill {
+    object-fit: fill;
+}
+
+.obf-contain {
+    object-fit: contain;
+}
+
+.obf-cover {
+    object-fit: cover;
+}
+
+.obf-scale-down {
+    object-fit: scale-down;
+}
+
+.bg-lightcoral {
+    background-color: lightcoral;
+}
+
+.bg-lightsalmon {
+    background-color: lightsalmon;
+}
+
+.bg-lightblue {
+    background-color: rgb(179, 179, 255);
+}
